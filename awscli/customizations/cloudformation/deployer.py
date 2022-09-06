@@ -117,6 +117,7 @@ class Deployer(object):
             'Capabilities': capabilities,
             'Description': description,
             'Tags': tags,
+            'IncludeNestedStacks': True,
         }
 
         # If an S3 uploader is available, use TemplateURL to deploy rather than
