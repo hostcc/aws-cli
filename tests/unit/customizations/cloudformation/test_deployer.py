@@ -122,7 +122,8 @@ class TestDeployer(BaseYAMLTest):
             "Description": botocore.stub.ANY,
             "RoleARN": role_arn,
             "NotificationARNs": notification_arns,
-            "Tags": tags
+            "Tags": tags,
+            "IncludeNestedStacks": True,
         }
 
         response = {
@@ -200,7 +201,8 @@ class TestDeployer(BaseYAMLTest):
             "Description": botocore.stub.ANY,
             "RoleARN": role_arn,
             "Tags": [],
-            "NotificationARNs": notification_arns
+            "NotificationARNs": notification_arns,
+            "IncludeNestedStacks": True,
         }
 
         response = {
@@ -265,7 +267,7 @@ class TestDeployer(BaseYAMLTest):
         expected_params = {
             "ChangeSetName": changeset_id,
             "StackName": stack_name,
-            "DisableRollback": False
+            "DisableRollback": False,
         }
 
         self.stub_client.add_response("execute_change_set", {}, expected_params)
@@ -280,7 +282,7 @@ class TestDeployer(BaseYAMLTest):
         expected_params = {
             "ChangeSetName": changeset_id,
             "StackName": stack_name,
-            "DisableRollback": disable_rollback
+            "DisableRollback": disable_rollback,
         }
 
         self.stub_client.add_response("execute_change_set", {}, expected_params)
